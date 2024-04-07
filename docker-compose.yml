@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+    database:
+      build:
+        context: ./database
+        dockerfile: dockerfile
+      volumes:
+        - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      ports:
+        - "3306:3306"
+      environment:
+        MYSQL_ROOT_PASSWORD: "pizza"
+        MYSQL_DATABASE: "pizza"
+        MYSQL_USER: "pizza"
+        MYSQL_PASSWORD: "pizza"
+        LANG: "en_US.UTF-8"
